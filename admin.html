@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .login-container {
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #575757;
+    }
+
+    .admin-panel {
+      display: none;
+      padding: 20px;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+    }
+
+    .sidebar a {
+      color: white;
+      padding: 15px;
+      text-decoration: none;
+      display: block;
+      border-bottom: 1px solid #444;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div class="login-container" id="login-form">
+    <h2>Admin Girişi</h2>
+    <input type="password" id="password" placeholder="şifreyi giriniz" />
+    <button onclick="checkPassword()">Giriş</button>
+    <button  >
+        <a style="color: white;" href="index.html">Geri Dön</a>
+    </button>
+  </div>
+
+  <!-- Admin Panel -->
+  <div class="admin-panel" id="admin-panel">
+    <div class="sidebar">
+      <h2 style="text-align: center;">Admin Panel</h2>
+      <a href="#">Gösterge Panosu</a>
+      <a href="#">Kullanıcılar</a>
+      <a href="#">Ayarlar</a>
+      <a href="index.html">Çıkış</a>
+    </div>
+    <div class="content">
+      <h1>Admin panele hoş geldiniz</h1>
+      <p>Bu, erişmek için şifre gerektiren basit bir admin panelidir.</p>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      var password = document.getElementById('password').value;
+      if (password === "sude123") {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('admin-panel').style.display = 'block';
+      } else {
+        alert("Şifre yanlış.Lütfen tekrar deneyin.");
+      }
+    }
+  </script>
+
+</body>
+</html>

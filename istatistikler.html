@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spor Sayfası İstatistikleri</title>
+  
+  <!-- Chart.js Kütüphanesi -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .chart-container {
+      margin: 20px auto;
+      width: 80%;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+    }
+  </style>
+    <style>
+      .dropdown-menu {
+    position: absolute; /* Menü ana öğeden bağımsız olsun */
+    transform: translate3d(0, 0, 0); /* Konumlandırmayı düzelt */
+    z-index: 1050; /* Üstte görünsün */
+    top: 100%; /* Menü, ana öğenin altına gelsin */
+    left: 0;
+    will-change: transform;
+  }
+  
+  .dropdown-menu.dropdown-custom {
+    background-color: #ffc107; /* İsteğe bağlı olarak renk özelleştirme */
+  }
+  
+  .navbar {
+    overflow: visible; /* Taşmaları engelleme */
+  }
+  
+    </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Spor Sayfası İstatistikleri</h1>
+
+    <!-- Grafikler -->
+    <div class="chart-container">
+      <canvas id="customerChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="trainerChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="productChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="satisfactionChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Chart.js Grafikleri
+    // Müşteri Sayısı
+    const customerCtx = document.getElementById('customerChart').getContext('2d');
+    new Chart(customerCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs'],
+        datasets: [{
+          label: 'Müşteri Sayısı',
+          data: [100, 200, 300, 400, 500],
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Antrenör Sayısı
+    const trainerCtx = document.getElementById('trainerChart').getContext('2d');
+    new Chart(trainerCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Fitness', 'Yoga', 'Pilates', 'Zumba'],
+        datasets: [{
+          label: 'Antrenör Dağılımı',
+          data: [10, 15, 5, 20],
+          backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0'],
+          hoverOffset: 4
+        }]
+      }
+    });
+
+    // Ürün Dağılımı
+    const productCtx = document.getElementById('productChart').getContext('2d');
+    new Chart(productCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Protein Tozları', 'Vitaminler', 'Ekipmanlar', 'Giyim'],
+        datasets: [{
+          label: 'Ürün Dağılımı',
+          data: [40, 30, 20, 10],
+          backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#0073b7'],
+          hoverOffset: 4
+        }]
+      }
+    });
+
+    // Müşteri Memnuniyeti
+    const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
+    new Chart(satisfactionCtx, {
+      type: 'line',
+      data: {
+        labels: ['1.Çeyrek', '2.Çeyrek', '3.Çeyrek', '4.Çeyrek'],
+        datasets: [{
+          label: 'Müşteri Memnuniyeti (%)',
+          data: [75, 80, 85, 90],
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          borderColor: 'rgba(153, 102, 255, 1)',
+          borderWidth: 1,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
